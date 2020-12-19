@@ -29,9 +29,9 @@ class GbParsePipeline:
 
 class GbImagePipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
-        for img_url in item.get('img', []):
+        for img_url in item['images']:
             yield Request(img_url)
 
     def item_completed(self, results, item, info):
-        item['img'] = [itm[1] for itm in results]
+        item['images'] = [itm[1] for itm in results]
         return item
